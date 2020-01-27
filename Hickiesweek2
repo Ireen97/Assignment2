@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hickies</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+
+<!-- header with title -->
+
+<div class="container" style="margin-top:30px; background: white;">
+
+  <h1 style="background: white;">HICKIES Originals</h1>
+  <br>
+
+
+  <div class=" row" style="background: white;">
+    <div class="d-inline col-sm-4">
+      <i class="fas fa-star";></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </div>
+    <div class="d-inline col-sm-2">
+      <p style="color:gray;background: white;"> 1,293 reviews </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="d-inline col-sm-4">
+      <P style="color:red;background: white;" ><font id =  "price" size="15">$14.99</font></p>
+    </div>
+    <div class="d-inline col-sm-2">
+      <br>
+      <p style="color:gray; background: white;" > $17.99 </p>
+    </div>
+    <div class="d-inline col-sm-2">
+      <br>
+      <p style="color:gray; background: white;"> 25% OFF </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <p> ONLINE EXCLUSIVE </p>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <b> COLOR: </b>
+
+    </div>
+    <div class="col-sm-2">
+      <P id = "color-picked"> Electric Red </p>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <!--Color selection/ Product-->    
+<div style="text-align:left">
+    <span id="brown" onclick="showColor(this.id)"  class="dot" style="background: brown;"></span>
+   <span id="violet" onclick="showColor(this.id)" class="dot" style="background: violet;"></span>
+    <span id="black" onclick="showColor(this.id)" class="dot" style="background: black;"></span>
+    <span id="plum" onclick="showColor(this.id)"  class="dot" style="background: plum;"></span>
+    <span id="orange" onclick="showColor(this.id)" class="dot" style="background: orange;"></span>
+    <span id="yellow" onclick="showColor(this.id)" class="dot" style="background: yellow;"></span>
+    <span id="brightblue" onclick="showColor(this.id)" class="dot" style="background: darkblue;"></span>
+    <span id="slategrey" onclick="showColor(this.id)" class="dot" style="background: slategrey;"></span>
+    <span id="beige" onclick="showColor(this.id)" class="dot" style="background: beige;"></span>
+    <span id="orangered" onclick="showColor(this.id)" class="dot" style="background: orangered;"></span>
+    <span id="lime" onclick="showColor(this.id)"  class="dot" style="background: lime;"></span>
+    <span id="fuchsia" onclick="showColor(this.id)" class="dot" style="background: fuchsia;"></span>
+    <span id="swamp" onclick="showColor(this.id)" class="dot" style="background: rgb(110, 110, 11);"></span>
+    <span id="forestgreen" onclick="showColor(this.id)" class="dot" style="background: forestgreen;"></span>
+    <span id="darkgray" onclick="showColor(this.id)" class="dot" style="background: darkgray;"></span>
+    <span id="burlywood" onclick="showColor(this.id)" class="dot" style="background: burlywood;"></span>
+    <span id="lightblue" onclick="showColor(this.id)" class="dot" style="background: lightskyblue;"></span>
+    <span d="lightgrey" onclick="showColor(this.id)" class="dot" style="background: lightgrey;"></span>
+  
+  </div>
+  </div>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-1">
+      <button id="no_of_items" type="button" class="btn btn-primary" >
+        0
+      </button>
+    </div>
+
+    <div class="col-sm-4">
+      <button  id= "addToCart" onclick="loadToCart()" ontype="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Add to cart
+      </button>
+    </div>
+  </div>
+
+    <!--Footer-->
+    <hr>
+    <br>
+    <p>DETAILS</p>
+    <div color_id = "3" id="items_bought" ></div>
+    <br>
+  <hr> 
+  
+  <br>
+        <p> Need help?</p>
+        <p>Shopping & Returns</p>
+
+</div>
+
+<script>
+  document.getElementById("minus_item_but").onclick = function() {adjustItems("minus_item_but")};
+  document.getElementById("add_item_but").onclick = function() {adjustItems("add_item_but")};
+
+  function adjustItems(button_id){
+    var hmtlText = document.getElementById('number_items');
+    var number = hmtlText.innerHTML;
+    if (button_id=="minus_item_but") {
+      if(number > 0){
+        number--;
+      }
+    }else {
+      number++;
+    }
+    hmtlText.innerHTML = number;
+  }
+  //show color picked
+  function showColor(color) {
+    var hmtlText = document.getElementById('color-picked')
+    hmtlText.innerHTML = color;
+
+    document.getElementById('price').innerHTML = "$"+ color.length*2 + ".99";
+  }
+  //show product on modal when add cart is clicked
+  function loadToCart() {
+    var hmtlText = document.getElementById('product');
+
+    hmtlText.innerHTML = document.getElementById('color-picked').innerHTML;
+  }
+
+  //agree to order  { chekout }
+  function onAgreeClick() {
+    document.getElementById('addToCart').innerHTML  = "checkout now";
+    document.getElementById('no_of_items').innerHTML  = document.getElementById('number_items').innerHTML;
+
+    var color_id = document.getElementById('color-picked').innerHTML;
+    var n = document.getElementById('number_items').innerHTML;
+
+
+    var clr = document.getElementById('color-picked').innerHTML;
+    for(i=0;i<n;i++){
+      document.getElementById('items_bought').innerHTML =  document.getElementById('items_bought').innerHTML + '<button id="blue" onclick="showColor(this.id)" class ="dot" style="background:'+clr+';" ><span class="dot'+ color_id +' "></span></button>';
+      //                                                                                                        <span id="brown" onclick="showColor(this.id)"  class="dot" style="background: brown;"></span>
+    }
+    
+  }
+</script>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Please add the quantity of the item you have selected</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="row modal-body">
+        <div class="d-inline col-sm-2">
+          <p id="product">None</p>
+        </div>
+        <div class="d-inline col-sm-2">
+          <button id="minus_item_but" onclick="adjustItems(this.id);" type="button" class="btn btn-danger" >-</button>
+        </div>
+        <div class="d-inline col-sm-2">
+          <p  id="number_items">0</p>
+        </div>
+        <div class="d-inline col-sm-2">
+          <button id="add_item_but" onclick="adjustItems(this.id);" type="button" class="btn btn-danger" >+</button>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" onclick="onAgreeClick()" class="btn btn-primary" data-dismiss="modal">Agree</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+  
+
+</html>
+
+<style>
+*{
+  background-image:url("Hickies background.jpeg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+}
+
+.container{
+  background: white ;
+}
+
+</style>
+
+
+<style>
+.dot{
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+span.dot:hover{
+  border-radius: 2px;
+  border: black;
+}
+
+i , div , h1 , button , p ,font ,b{
+  background: white;
+}
+
+</style>
